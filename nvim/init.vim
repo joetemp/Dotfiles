@@ -2,14 +2,14 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/local/config/nvim/bundle/Vundle.vim,~/local/config/nvim/lightline.vim
+set rtp+=$XDG_CONFIG_HOME/nvim/bundle/Vundle.vim,$XDG_CONFIG_HOME/nvim/lightline.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'file:///home/joe/local/config/nvim/lightline.vim'
+Plugin 'itchyny/lightline.vim'
 Bundle 'edkolev/promptline.vim'
 
 " All of your Plugins must be added before the following line
