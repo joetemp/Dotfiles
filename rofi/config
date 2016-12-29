@@ -1,0 +1,11 @@
+! ------------------------------------------------------------------------------
+! ROFI Color theme - Base16 Ocean
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #2b303b, #2b303b, #2b303b 
+rofi.color-normal: #2b303b, #a3be8c, #2b303b, #a3be8c, #2b303b 
+rofi.color-active: 
+rofi.color-urgent: 
+rofi.opacity: 90 
+rofi.fullscreen: true
+rofi.padding: 400

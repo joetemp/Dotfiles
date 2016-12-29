@@ -1,0 +1,130 @@
+#!/bin/bash
+
+bar_color="#252527"
+active_bar_color="#333A44"
+text_color="#A0A4AF"
+empty="#5a5d5d"
+COLOR_ACTIVE_MONITOR_BG="#333A44"
+COLOR_ACTIVE_MONITOR_FG="#F9FFFF"
+COLOR_FOCUSED_OCCUPIED_FG="#A09BA1"
+
+
+num_mon=$(bspc query -M | wc -l)
+ 
+while read -r line; do
+ 
+    case $line in
+ 
+        # BSPWM 
+      
+        W*)
+            wm_infos=""
+            IFS=':'
+            set - ${line#?}
+            while [ $# -gt 0 ];do
+                active_monitor=0
+                if [[ "$item" == "M"* ]]; then 
+                    active_monitor=1 
+                fi 
+                item=$1     
+                name=${item#?}
+                case $item in
+
+                    O*)
+                        if [ $active_monitor -eq 1 ]; then
+                            # focused desktop and focused monitor
+                            wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$active_bar_color}%{U$COLOR_FOCUSED_OCCUPIED_FG}%{+u}     ${name}     %{-u}%{B-}%{F-}"
+
+                        else
+                            # focused desktop and non-focused monitor
+                            wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
+
+                        fi
+                        # focused occupied desktop
+                        # wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
+                    ;;
+
+                    o*) 
+                        wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
+                    ;;
+
+                    F*)
+                        # focused free desktop
+                        wm_infos="${wm_infos}%{F#00F5FF}%{B#7FFFD4}%{U#00FF00}%{+u}     ${name}     %{-u}%{B-}%{F-}"
+                    ;;
+
+                    f*)
+                        # free desktop
+                        wm_infos="${wm_infos}%{F$empty}%{B$bar_color}     ${name}     %{B-}%{F-}"
+                    ;;
+                        
+                esac 
+                shift
+            done    
+            ;; 
+
+            # Conky
+
+	       
+            c*) 
+                #cpu=$(cut -c 2- <<< "$line")
+		cpu="   ${line#?}   "
+            ;;
+
+            t*)
+                #temp=$(cut -c 2- <<< "$line")
+		temp="   ${line#?}   "
+            ;;
+
+            r*)
+                #root=$(cut -c 2- <<< "$line")
+		root="   ${line#?}   "
+            ;;
+
+            y*)
+                #song=$(cut -c 2- <<< "$line")
+                song="%{B#414E5E} %{F#FF0000}   ${line#?}  %{F-} %{B-}"
+            ;;
+
+            i*)
+                #download=$(cut -c 2- <<< "$line")
+	        download="   ${line#?}   "
+            ;; 
+
+            I*)
+                #upload=$(cut -c 2- <<< "$line")
+		upload="   ${line#?}   "
+            ;;
+
+            v*)
+                #volume=$(cut -c 2- <<< "$line")
+		volume="   ${line#?}   "
+            ;;
+
+            T*)
+                #time=$(cut -c 2- <<< "$line")
+		time="   ${line#?}   "
+            ;;
+
+            D*)
+                #date=$(cut -c 2- <<< "$line")
+		date="   ${line#?}   "
+            ;;  
+
+
+    esac     
+
+    printf "%s\n" "%{l}${wm_infos} %{c}${song} %{r}${download}${upload}${cpu}${temp}${root}${volume}${date}${time}"
+
+done < <(\
+    bspc subscribe & \
+    conky -c $XDG_CONFIG_HOME/conky/cpu.conf & \
+    conky -c $XDG_CONFIG_HOME/conky/temp.conf & \
+    conky -c $XDG_CONFIG_HOME/conky/root.conf & \
+    conky -c $XDG_CONFIG_HOME/conky/song.conf & \
+    conky -c $XDG_CONFIG_HOME/conky/speedtest-down.conf & \
+    conky -c $XDG_CONFIG_HOME/conky/speedtest-up.conf & \
+    conky -c $XDG_CONFIG_HOME/conky/time.conf & \
+    conky -c $XDG_CONFIG_HOME/conky/date.conf & \
+    conky -c $XDG_CONFIG_HOME/conky/volume.conf
+) | lemonbar -g 1920x22+1920+0 -p -B $bar_color -f FontAwesome-11 -f Roboto-10 -F $text_color

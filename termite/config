@@ -1,0 +1,44 @@
+[options]
+font = Source Code Pro 10
+clickable_url = true
+browser = firefox
+
+[colors]
+
+# special
+foreground      = #c2c2c2
+foreground_bold = #c2c2c2
+cursor          = #c2c2c2
+background      = #222222
+
+# black
+color0  = #222222
+color8  = #333333
+
+# magenta
+color1  = #c1388f
+color9  = #e744ea
+
+# coral
+color2  = #d1786b
+color10 = #ff9282
+
+# purple
+color3  = #4c2e8e
+color11 = #7748df
+
+# cyan
+color4  = #3299ae
+color12 = #44d1ef
+
+# green
+color5  = #03d07c
+color13 = #03fe97
+
+# blue
+color6  = #184fa9
+color14 = #206ce8
+
+# white
+color7  = #707880
+color15 = #c5c8c6
