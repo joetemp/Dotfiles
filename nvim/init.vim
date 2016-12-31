@@ -36,4 +36,6 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 
+:nmap <C-N> :set invnumber<CR>
+:set noshowmode
 :set nowrap

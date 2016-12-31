@@ -11,34 +11,34 @@ foreground_bold = #c2c2c2
 cursor          = #c2c2c2
 background      = #222222
 
-# black
-color0  = #222222
-color8  = #333333
+# yellow
+color0  = #f8fa8a
+color8  = #cbcd71
 
 # magenta
-color1  = #c1388f
-color9  = #e744ea
+color1  = #e744ea
+color9  = #c1388f
 
 # coral
-color2  = #d1786b
-color10 = #ff9282
+color2  = #ff9282
+color10 = #d1786b
 
 # purple
-color3  = #4c2e8e
-color11 = #7748df
+color3  = #7748df
+color11 = #4c2e8e
 
 # cyan
-color4  = #3299ae
-color12 = #44d1ef
+color4  = #44d1ef
+color12 = #3299ae
 
 # green
-color5  = #03d07c
-color13 = #03fe97
+color5  = #03fe97
+color13 = #03d07c
 
 # blue
-color6  = #184fa9
-color14 = #206ce8
+color6  = #206ce8
+color14 = #184fa9
 
-# white
-color7  = #707880
-color15 = #c5c8c6
+# gray
+color7  = #7c7c7c
+color15 = #c2c2c2

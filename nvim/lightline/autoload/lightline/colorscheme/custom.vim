@@ -1,19 +1,18 @@
 " =============================================================================
-" Filename: autoload/lightline/colorscheme/landscape.vim
-" Author: itchyny
+" Filename: autoload/lightline/colorscheme/custom.vim
+" Author: nixnerd
 " License: MIT License
-" Last Change: 2015/11/26 21:49:44.
 " =============================================================================
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
-let s:p.normal.left = [ ['#0000ff', '#ff0000', 1, 231, 'bold' ], [ '#ffffff', '#0000ff', 231, 1 ] ]
-let s:p.normal.right = [ [ '#303030', '#d0d0d0', 236, 252 ], [ '#303030', '#8a8a8a', 236, 245 ], [ '#bcbcbc', '#585858', 250, 240 ] ]
-let s:p.inactive.right = [ [ '#121212', '#606060', 233, 241 ], [ '#121212', '#3a3a3a', 233, 237 ], [ '#121212', '#262626', 233, 235 ] ]
+let s:p.normal.left = [ ['#000000', '#000000', 3, 233, 'bold' ], [ '#000000', '#000000', 233, 3 ] ]
+let s:p.normal.right = [ [ '#000000', '#000000', 235, 15 ], [ '#000000', '#000000', 235, 7 ], [ '#000000', '#000000', 15, 239 ] ]
+ let s:p.inactive.right = [ [ '#121212', '#606060', 233, 241 ], [ '#121212', '#3a3a3a', 233, 237 ], [ '#121212', '#262626', 233, 235 ] ]
 let s:p.inactive.left = s:p.inactive.right[1:]
-let s:p.insert.left =  [ ['#005f00', '#ffffff', 22, 231, 'bold' ], [ '#ffffff', '#005f00', 231, 22 ] ]
-let s:p.replace.left = [ [ '#af0000', '#ffffff', 124, 231, 'bold' ], [ '#ffffff', '#af0000', 231, 124 ] ]
-let s:p.visual.left = [ [ '#5f00ff', '#ffffff', 57, 231, 'bold' ], [ '#ffffff', '#5f00ff', 231, 57 ] ]
-let s:p.normal.middle = [ [ '#8a8a8a', '#303030', 245, 236 ] ]
+let s:p.insert.left =  [ ['#000000', '#000000', 5, 233, 'bold' ], [ '#000000', '#000000', 233, 5 ] ]
+let s:p.replace.left = [ [ '#000000', '#000000', 0, 233, 'bold' ], [ '#000000', '#000000', 233, 0 ] ]
+let s:p.visual.left = [ [ '#000000', '#000000', 4, 233, 'bold' ], [ '#ffffff', '#5f00ff', 233, 4 ] ]
+let s:p.normal.middle = [ [ '#000000', '#000000', 245, 236 ] ]
 let s:p.inactive.middle = [ [ '#303030', '#121212', 236, 233 ] ]
 let s:p.tabline.left = [ [ '#d0d0d0', '#666666', 252, 242 ] ]
 let s:p.tabline.tabsel = [ [ '#dadada', '#121212', 253, 233 ] ]
