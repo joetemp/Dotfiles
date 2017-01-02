@@ -68,47 +68,47 @@ while read -r line; do
 	       
             c*) 
                 #cpu=$(cut -c 2- <<< "$line")
-		cpu="   ${line#?}   "
+		cpu="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
             ;;
 
             t*)
                 #temp=$(cut -c 2- <<< "$line")
-		temp="   ${line#?}   "
+		temp="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
             ;;
 
             r*)
                 #root=$(cut -c 2- <<< "$line")
-		root="   ${line#?}   "
+		root="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
             ;;
 
             y*)
                 #song=$(cut -c 2- <<< "$line")
-                song="%{B#414E5E} %{F#FF0000}   ${line#?}  %{F-} %{B-}"
+		song="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
             ;;
 
             i*)
                 #download=$(cut -c 2- <<< "$line")
-	        download="   ${line#?}   "
+	        download="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
             ;; 
 
             I*)
                 #upload=$(cut -c 2- <<< "$line")
-		upload="   ${line#?}   "
+		upload="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
             ;;
 
             v*)
                 #volume=$(cut -c 2- <<< "$line")
-		volume="   ${line#?}   "
+		volume="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
             ;;
 
             T*)
                 #time=$(cut -c 2- <<< "$line")
-		time="   ${line#?}   "
+		time="%{B#c2c2c2}%{F#262626}   ${line#?}   %{F-}%{B-}"
             ;;
 
             D*)
                 #date=$(cut -c 2- <<< "$line")
-		date="   ${line#?}   "
+		date="%{B#7c7c7c}%{F#262626}   ${line#?}   %{F-}%{B-}"
             ;;  
 
 
