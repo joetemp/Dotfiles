@@ -1,18 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
-bar_color="#252527"
-active_bar_color="#333A44"
-text_color="#a0a4af"
-empty="#5a5d5d"
-COLOR_ACTIVE_MONITOR_BG="#333A44"
-COLOR_ACTIVE_MONITOR_FG="#F9FFFF"
-COLOR_FOCUSED_OCCUPIED_FG="#A09BA1"
-
+$XDG_CONFIG_HOME/bspwm/panel_colors
 
 num_mon=$(bspc query -M | wc -l)
  
 while read -r line; do
- 
     case $line in
  
         # BSPWM 
@@ -22,41 +14,35 @@ while read -r line; do
             IFS=':'
             set - ${line#?}
             while [ $# -gt 0 ];do
-                active_monitor=0
-                if [[ "$item" == "M"* ]]; then 
-                    active_monitor=1 
-                fi 
                 item=$1     
                 name=${item#?}
                 case $item in
 
-                    O*)
-                        if [ $active_monitor -eq 1 ]; then
-                            # focused desktop and focused monitor
-                            wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$active_bar_color}%{U$COLOR_FOCUSED_OCCUPIED_FG}%{+u}     ${name}     %{-u}%{B-}%{F-}"
+					O*)
+						# focused occupied desktop
+						wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$COLOR_FOCUSED_OCCUPIED_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+						;;
+					F*)
+						# focused free desktop
+						wm_infos="${wm_infos}%{F$COLOR_FOCUSED_FREE_FG}%{B$COLOR_FOCUSED_FREE_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+						;;
+					U*)
+						# focused urgent desktop
+						wm_infos="${wm_infos}%{F$COLOR_FOCUSED_URGENT_FG}%{B$COLOR_FOCUSED_URGENT_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+						;;
+					o*)
+						# occupied desktop
+						wm_infos="${wm_infos}%{F$COLOR_OCCUPIED_FG}%{B$COLOR_OCCUPIED_BG} ${name} %{B-}%{F-}"
+						;;
+					f*)
+						# free desktop
+						wm_infos="${wm_infos}%{F$COLOR_FREE_FG}%{B$COLOR_FREE_BG} ${name} %{B-}%{F-}"
+						;;
+					u*)
+						# urgent desktop
+						wm_infos="${wm_infos}%{F$COLOR_URGENT_FG}%{B$COLOR_URGENT_BG} ${name} %{B-}%{F-}"
+                                                ;;
 
-                        else
-                            # focused desktop and non-focused monitor
-                            wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
-
-                        fi
-                        # focused occupied desktop
-                        # wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
-                    ;;
-
-                    o*) 
-                        wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
-                    ;;
-
-                    F*)
-                        # focused free desktop
-                        wm_infos="${wm_infos}%{F#00F5FF}%{B#7FFFD4}%{U#00FF00}%{+u}     ${name}     %{-u}%{B-}%{F-}"
-                    ;;
-
-                    f*)
-                        # free desktop
-                        wm_infos="${wm_infos}%{F$empty}%{B$bar_color}     ${name}     %{B-}%{F-}"
-                    ;;
                         
                 esac 
                 shift
@@ -127,4 +113,4 @@ done < <(\
     conky -c $XDG_CONFIG_HOME/conky/time.conf & \
     conky -c $XDG_CONFIG_HOME/conky/date.conf & \
     conky -c $XDG_CONFIG_HOME/conky/volume.conf
-) | lemonbar -g 1920x22+1920+0 -p -B $bar_color -f FontAwesome-11 -f Roboto-10 -F $text_color
+) | lemonbar -g 1920x22+1920+0 -p -B $COLOR_BACKGROUND -f FontAwesome-11 -f Roboto-10 -F $COLOR_FOREGROUND
