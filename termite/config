@@ -6,10 +6,10 @@ browser = firefox
 [colors]
 
 # special
-foreground      = #c2c2c2
-foreground_bold = #c2c2c2
-cursor          = #c2c2c2
-background      = #222222
+foreground      = #c2c5cc
+foreground_bold = #c2c5cc
+cursor          = #c2c5cc
+background      = #252527
 
 # yellow
 color0  = #f8fa8a
@@ -39,6 +39,10 @@ color13 = #03d07c
 color6  = #206ce8
 color14 = #184fa9
 
-# gray
-color7  = #7c7c7c
-color15 = #c2c2c2
+# white
+color7  = #898a8c
+color15 = #c2c5cc
+
+# black
+color237 = #38383a
+color241 = #646366

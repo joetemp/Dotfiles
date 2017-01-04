@@ -2,7 +2,7 @@
 
 bar_color="#252527"
 active_bar_color="#333A44"
-text_color="#A0A4AF"
+text_color="#a0a4af"
 empty="#5a5d5d"
 COLOR_ACTIVE_MONITOR_BG="#333A44"
 COLOR_ACTIVE_MONITOR_FG="#F9FFFF"
@@ -68,47 +68,47 @@ while read -r line; do
 	       
             c*) 
                 #cpu=$(cut -c 2- <<< "$line")
-		cpu="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
+		cpu="   ${line#?}   "
             ;;
 
             t*)
                 #temp=$(cut -c 2- <<< "$line")
-		temp="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
+		temp="   ${line#?}   "
             ;;
 
             r*)
                 #root=$(cut -c 2- <<< "$line")
-		root="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
+		root="   ${line#?}   "
             ;;
 
             y*)
                 #song=$(cut -c 2- <<< "$line")
-		song="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
+		song="   ${line#?}   "
             ;;
 
             i*)
                 #download=$(cut -c 2- <<< "$line")
-	        download="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
+	        download="   ${line#?}   "
             ;; 
 
             I*)
                 #upload=$(cut -c 2- <<< "$line")
-		upload="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
+		upload="   ${line#?}   "
             ;;
 
             v*)
                 #volume=$(cut -c 2- <<< "$line")
-		volume="%{B#4e4e4e}%{F#c2c2c2}   ${line#?}   %{F-}%{B-}"
+		volume="   ${line#?}   "
             ;;
 
             T*)
                 #time=$(cut -c 2- <<< "$line")
-		time="%{B#c2c2c2}%{F#262626}   ${line#?}   %{F-}%{B-}"
+		time="   ${line#?}   "
             ;;
 
             D*)
                 #date=$(cut -c 2- <<< "$line")
-		date="%{B#7c7c7c}%{F#262626}   ${line#?}   %{F-}%{B-}"
+		date="   ${line#?}   "
             ;;  
 
 
