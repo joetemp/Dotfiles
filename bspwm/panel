@@ -22,29 +22,17 @@ while read -r line; do
             IFS=':'
             set - ${line#?}
             while [ $# -gt 0 ];do
-                active_monitor=0
-                if [[ "$item" == "M"* ]]; then 
-                    active_monitor=1 
-                fi 
                 item=$1     
                 name=${item#?}
                 case $item in
 
                     O*)
-                        if [ $active_monitor -eq 1 ]; then
-                            # focused desktop and focused monitor
-                            wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$active_bar_color}%{U$COLOR_FOCUSED_OCCUPIED_FG}%{+u}     ${name}     %{-u}%{B-}%{F-}"
-
-                        else
-                            # focused desktop and non-focused monitor
-                            wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
-
-                        fi
                         # focused occupied desktop
-                        # wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
+                        wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
                     ;;
 
                     o*) 
+			# occupied desktop
                         wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$bar_color}     ${name}     %{B-}%{F-}"
                     ;;
 
@@ -56,6 +44,17 @@ while read -r line; do
                     f*)
                         # free desktop
                         wm_infos="${wm_infos}%{F$empty}%{B$bar_color}     ${name}     %{B-}%{F-}"
+                    ;;
+
+	            U*)
+                        # focused urget desktop
+                        wm_infos="${wm_infos}%{F#ff0000}%{B#0000ff}%{U#ffff00}%{+u} ${name} %{-u}%{B-}%{F-}"
+			
+		    ;;
+
+                    u*)
+                        # urgent desktop
+                        wm_infos="${wm_infos}%{F#00ff00}%{B#ffa500} ${name} %{B-}%{F-}"
                     ;;
                         
                 esac 
